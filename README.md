@@ -119,3 +119,7 @@ $ go run black.go
 |J J J J J|D|A A A A A|
 +-+-+-+-+-+-+-+-+-+-+-+
 ```
+
+## License
+
+This solver is licensed under the [WTFPL](http://www.wtfpl.net/).

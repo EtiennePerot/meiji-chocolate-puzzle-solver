@@ -2,7 +2,7 @@
 
 ## What is this?
 
-I got nerdsniped one day with a Meiji chocolate puzzle. It's a puzzle that looks like a Meiji chocolate tablet. Each piece is a bunch of chocolate squares, and the overall pieces form a rectangle. The goal of the puzzle is to find a way to recreate that rectangle out of the pieces.
+I got nerdsniped one day with a Meiji chocolate puzzle. It's a puzzle that looks like a Meiji chocolate tablet. Each piece is a bunch of chocolate squares, and the overall pieces form a rectangle. The goal of the puzzle is to find a way to recreate that rectangle out of the pieces. This type of puzzle is also known as polyomino puzzle.
 
 This solver is written in Go and can solve all 3 Meiji puzzles (white, milk, chocolate) in about 1~5 seconds. There's some luck involved in the search "algorithm" (brute-force), as it is a parallelized brute-force solver. It explores the search space in pretty random order, though in practice it will generally find solutions with pieces defined "earlier" in the puzzle definition as being generally closer to the top-left corner of the puzzle, since the solver stops looking as soon as it finds one valid solution.
 
@@ -14,7 +14,7 @@ Enjoy!
 
 All puzzles have multiple solutions. The following contains 2 solutions for each puzzle. The solver finds a random one on each run.
 
-### White
+### Meiji White Chocolate Puzzle
 
 The white chocolate puzzle is a 8x5 grid (40 cells) with 8 puzzle pieces.
 
@@ -46,7 +46,7 @@ $ go run white.go
 +-+-+-+-+-+-+-+-+
 ```
 
-### Milk
+### Meiji Milk Chocolate Puzzle
 
 The Milk chocolate puzzle is a 10x6 grid (60 cells) with 12 puzzle pieces.
 
@@ -82,7 +82,7 @@ $ go run milk.go
 +-+-+-+-+-+-+-+-+-+-+
 ```
 
-### Black
+### Meiji Black Chocolate Puzzle
 
 The Black chocolate puzzle is a 11x6 grid (66 cells) with 11 puzzle pieces. What makes it interesting is that its 66 cells mean it does not fit in a 64-bit bitfield.
 

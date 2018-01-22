@@ -19,7 +19,7 @@ All puzzles have multiple solutions. The following contains 2 solutions for each
 The white chocolate puzzle is a 8x5 grid (40 cells) with 8 puzzle pieces.
 
 ```shell
-go run white.go
+$ go run white.go
 +-+-+-+-+-+-+-+-+
 |A A A A|B|D D D|
 + +-+-+-+ +-+-+ +

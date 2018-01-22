@@ -20,6 +20,33 @@ type Solution struct {
 	PiecesLeft    []*Piece
 }
 
+var (
+	boxLeft       = 1 << 0
+	boxRight      = 1 << 1
+	boxUp         = 1 << 2
+	boxDown       = 1 << 3
+	boxHorizontal = "─"
+	boxVertical   = "│"
+	boxDrawing    = map[int]string{
+		boxLeft + boxRight + boxUp + boxDown: "┼",
+		boxLeft + boxRight + boxUp + 0:       "┴",
+		boxLeft + boxRight + 0 + boxDown:     "┬",
+		boxLeft + boxRight + 0 + 0:           boxHorizontal,
+		boxLeft + 0 + boxUp + boxDown:        "┤",
+		boxLeft + 0 + boxUp + 0:              "┘",
+		boxLeft + 0 + 0 + boxDown:            "┐",
+		boxLeft + 0 + 0 + 0:                  boxHorizontal,
+		0 + boxRight + boxUp + boxDown:       "├",
+		0 + boxRight + boxUp + 0:             "└",
+		0 + boxRight + 0 + boxDown:           "┌",
+		0 + boxRight + 0 + 0:                 boxHorizontal,
+		0 + 0 + boxUp + boxDown:              boxVertical,
+		0 + 0 + boxUp + 0:                    boxVertical,
+		0 + 0 + 0 + boxDown:                  boxVertical,
+		0 + 0 + 0 + 0:                        " ",
+	}
+)
+
 func (s Solution) Print() {
 	width := s.Solver.Width
 	height := s.Solver.Height
@@ -30,11 +57,6 @@ func (s Solution) Print() {
 			line[x] = " "
 		}
 		lines[y] = line
-	}
-	for y := 0; y <= height; y++ {
-		for x := 0; x <= width; x++ {
-			lines[y*2][x*2] = "+"
-		}
 	}
 	setBoardCell := func(x, y int, piece *Piece) {
 		lines[y*2+1][x*2+1] = piece.Name
@@ -63,10 +85,30 @@ func (s Solution) Print() {
 		}
 		for _, position := range positions {
 			x, y := position[0], position[1]
-			setBoardCellEdge(x, y, -1, 0, "|")
-			setBoardCellEdge(x, y, 1, 0, "|")
-			setBoardCellEdge(x, y, 0, -1, "-")
-			setBoardCellEdge(x, y, 0, 1, "-")
+			setBoardCellEdge(x, y, -1, 0, boxVertical)
+			setBoardCellEdge(x, y, 1, 0, boxVertical)
+			setBoardCellEdge(x, y, 0, -1, boxHorizontal)
+			setBoardCellEdge(x, y, 0, 1, boxHorizontal)
+		}
+	}
+
+	// Write characters in the corners
+	for y := 0; y <= height; y++ {
+		for x := 0; x <= width; x++ {
+			box := 0
+			if x > 0 && lines[y*2][x*2-1] != " " {
+				box += boxLeft
+			}
+			if x < width && lines[y*2][x*2+1] != " " {
+				box += boxRight
+			}
+			if y > 0 && lines[y*2-1][x*2] != " " {
+				box += boxUp
+			}
+			if y < height && lines[y*2+1][x*2] != " " {
+				box += boxDown
+			}
+			lines[y*2][x*2] = boxDrawing[box]
 		}
 	}
 

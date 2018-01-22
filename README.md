@@ -16,6 +16,10 @@ All puzzles have multiple solutions. The following contains 2 solutions for each
 
 ### Meiji White Chocolate Puzzle
 
+<div align="center">
+	<img src="https://github.com/EtiennePerot/meiji-chocolate-puzzle-solver/blob/master/img/white.jpg?raw=true" alt="Meiji White Chocolate Puzzle"/>
+</div>
+
 The white chocolate puzzle is a 8x5 grid (40 cells) with 8 puzzle pieces.
 
 ```shell
@@ -47,6 +51,10 @@ $ go run white.go
 ```
 
 ### Meiji Milk Chocolate Puzzle
+
+<div align="center">
+	<img src="https://github.com/EtiennePerot/meiji-chocolate-puzzle-solver/blob/master/img/milk.jpg?raw=true" alt="Meiji Milk Chocolate Puzzle"/>
+</div>
 
 The Milk chocolate puzzle is a 10x6 grid (60 cells) with 12 puzzle pieces.
 
@@ -83,6 +91,10 @@ $ go run milk.go
 ```
 
 ### Meiji Black Chocolate Puzzle
+
+<div align="center">
+	<img src="https://github.com/EtiennePerot/meiji-chocolate-puzzle-solver/blob/master/img/black.jpg?raw=true" alt="Meiji Black Chocolate Puzzle"/>
+</div>
 
 The Black chocolate puzzle is a 11x6 grid (66 cells) with 11 puzzle pieces. What makes it interesting is that its 66 cells mean it does not fit in a 64-bit bitfield.
 

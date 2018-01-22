@@ -2,7 +2,7 @@
 
 ## What is this?
 
-I got nerdsniped one day with a Meiji chocolate puzzle. It's a puzzle that looks like a Meiji chocolate tablet. Each piece is a bunch of chocolate squares, and the overall pieces form a rectangle. The goal of the puzzle is to find a way to recreate that rectangle out of the pieces. This type of puzzle is also known as polyomino puzzle.
+I got [nerdsniped](https://www.xkcd.com/356/) one day with a Meiji chocolate puzzle. It's a puzzle that looks like a Meiji chocolate tablet. Each piece is a bunch of chocolate squares, and the overall pieces form a rectangle. The goal of the puzzle is to find a way to recreate that rectangle out of the pieces. This type of puzzle is also known as polyomino puzzle.
 
 This solver is written in Go and can solve all 3 Meiji puzzles (white, milk, chocolate) in about 1~5 seconds. There's some luck involved in the search "algorithm" (brute-force), as it is a parallelized brute-force solver. It explores the search space in pretty random order, though in practice it will generally find solutions with pieces defined "earlier" in the puzzle definition as being generally closer to the top-left corner of the puzzle, since the solver stops looking as soon as it finds one valid solution.
 
@@ -54,7 +54,23 @@ func main() {
 	}
 	solution.Print()
 }
+```
 
+The solver adds letters to the pieces so that you can play with pieces in multiple disjoint parts, e.g.
+
+```text
+   ┌───┐        ┌─┐                   ┌───┬─┐
+   │A A│        │B│                   │A A│B│
+   │ ┌─┼─┐      └─┼─┐   ⇒ Solve() ⇒   │ ┌─┼─┤
+   │A│ │A│        │B│                 │A│B│A│
+   └─┘ └─┘        └─┘                 └─┴─┴─┘
+
+
+    ┌─┐    ┌─┐  ┌─┐                   ┌─┬─┬─┐
+    │A│    │B│  │C│                   │B│C│A│
+┌─┬┄┴─┘  ┌─┼─┘  └─┼─┐   ⇒ Solve() ⇒   ├─┼─┼─┤
+│A│      │B│      │C│                 │A│B│C│
+└─┘      └─┘      └─┘                 └─┴─┴─┘
 ```
 
 ## Solutions

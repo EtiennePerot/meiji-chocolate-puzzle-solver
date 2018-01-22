@@ -5,25 +5,27 @@ import (
 	"perot.me/meiji-chocolate-puzzle-solver/solver"
 )
 
-/*
-
-Solution:
-
- +-+-+-+
- |A A|C|
- +-+-+ +
- |B|C C|
- +-+-+-+
-
-*/
-
 func main() {
+	// This creates a 3x2 board with 3 pieces:
+	// ┌───┐
+	// │A A│
+	// └───┘             (A gets rotated)
+	//                          ↓
+	//   ┌─┐                   ┌─┬─┬─┐
+	//   │B│                   │A│C│B│
+	// ┌─┘ │   => Solve() =>   │ ├─┘ │
+	// │B B│                   │A│B B│
+	// └───┘                   └─┴───┘
+	//
+	// ┌─┐
+	// │C│
+	// └─┘
 	s, err := solver.New(3, 2, `
 		**
 		
-		*
-		
+		 *
 		**
+		
 		*
 	`)
 	if err != nil {
